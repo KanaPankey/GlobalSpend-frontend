@@ -1,17 +1,20 @@
 // react
 import { useContext } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 
-// styling
+// css
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
 // context
-import EnvelopeArrayContext from "../context/EnvelopeArrayContext"
+import EnvelopeArrayContext from '../context/EnvelopeArrayContext'
 
+// api
+import BackendAPI from '../api/BackendAPI'
 
 function AddEditEnvelope(props) {
-  // props needed: setEnvelopeList; if editing, envelope object
+  const navigate = useNavigate()
 
   // states
   const { envelopeArray, setEnvelopeArray } = useContext(EnvelopeArrayContext)
@@ -30,12 +33,19 @@ function AddEditEnvelope(props) {
       fill_amt: event.target.elements[2].value,
     }
 
+    const data = editingEnvelope 
+      ? await BackendAPI.updateEnvelope(envelopeObj, props.envelope.id)
+      : await BackendAPI.addEnvelope(envelopeObj)
+    if (data) {
+      window.location.reload()
+    }
+
     // const copyEnvelopeArray = [...envelopeArray]
 
     // if (editingEnvelope) {
     //   copyEnvelopeArray.forEach((envelopeID) => {
     //     if (props.envelope.id == envelopeID) {
-    //       await BackendAPI.updateEnvelope(envelopeObj, props.envelope.id)
+    //       BackendAPI.updateEnvelope(envelopeObj, props.envelope.id)
     //     }
     //   })
     // } else {
@@ -46,13 +56,6 @@ function AddEditEnvelope(props) {
 
     // setEnvelopeArray(copyEnvelopeArray)
 
-
-    // const data = editingEnvelope 
-    //   ? await BackendAPI.updateEnvelope(envelopeObj, props.envelope.id)
-    //   : await BackendAPI.addEnvelope(envelopeObj)
-    // if (data) {
-    //   setEnvelopeArray()
-    // }
   }
 
   // render

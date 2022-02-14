@@ -27,7 +27,7 @@ function RenderFooter() {
         <Button className='add-icon' variant="primary" onClick={() => setEnvelopeModal(true)}>
           <RiMailAddFill className="footer-icon"/> 
         </Button>
-        <AddEditEnvelope envelope='false' show={envelopeModal} onHide={() => setEnvelopeModal(false)} />
+        <AddEditEnvelope show={envelopeModal} onHide={() => setEnvelopeModal(false)} />
       </>
       <>
         <Button className='add-icon' variant="primary" onClick={() => setStoreModal(true)}>
