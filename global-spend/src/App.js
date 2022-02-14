@@ -1,8 +1,9 @@
 // css
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 // react
+import { useState } from 'react'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 // pages
@@ -15,19 +16,30 @@ import StoresPage from './pages/StoresPage';
 import RenderNavbar from './components/RenderNavbar';
 import RenderFooter from './components/RenderFooter';
 
+// context
+import EnvelopeArrayContext from './context/EnvelopeArrayContext';
+
 function App() {
+  const [envelopeArray, setEnvelopeArray] = useState([])
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <RenderNavbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/transactions/" element={<TransactionsPage />} />
-          <Route path="/envelopes/" element={<EnvelopesPage />} />
-          <Route path="/stores/" element={<StoresPage />} />
-        </Routes> 
-        <RenderFooter />
-      </BrowserRouter>
+      <EnvelopeArrayContext.Provider
+        value={{
+          envelopeArray: envelopeArray,
+          setEnvelopeArray: setEnvelopeArray,
+        }}>
+        <BrowserRouter>
+          <RenderNavbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/transactions/" element={<TransactionsPage />} />
+            <Route path="/envelopes/" element={<EnvelopesPage />} />
+            <Route path="/stores/" element={<StoresPage />} />
+          </Routes> 
+          <RenderFooter />
+        </BrowserRouter>
+      </EnvelopeArrayContext.Provider>
     </div>
   );
 }
