@@ -22,9 +22,9 @@ function StoreDetail(props) {
   const deleteStore = async(storeID) => {
     const data = await BackendAPI.deleteStore(storeID)
     const storeList = await BackendAPI.fetchStores()
-    // if (storeList) {
-    //   setStoreArray(storeList)
-    // }
+    if (storeList) {
+      props.setStoreArray(storeList)
+    }
   }
 
   // render

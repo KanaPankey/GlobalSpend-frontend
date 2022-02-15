@@ -9,7 +9,6 @@ import BackendAPI from "../api/BackendAPI"
 import EnvelopeDropdown from "../components/EnvelopeDropdown"
 
 function EditStore(props) {
-  console.log("editstore props.store", props.store)
   // router props
   const navigate = useNavigate()
   const params = useParams()
