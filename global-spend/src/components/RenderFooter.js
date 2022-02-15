@@ -15,7 +15,7 @@ import AddEditStore from './AddEditStore'
 import Converter from './Converter'
 
 
-function RenderFooter({envelopeModal, setEnvelopeModal, storeModal, setStoreModal}) {
+function RenderFooter({envelopeModal, setEnvelopeModal, storeModal, setStoreModal, rate}) {
   // states for modals
   const [converterModal, setConverterModal] = useState(false)
 
@@ -37,7 +37,7 @@ function RenderFooter({envelopeModal, setEnvelopeModal, storeModal, setStoreModa
         <Button className='add-icon' variant="primary" onClick={() => setConverterModal(true)}>
           <BsCurrencyExchange className="footer-icon"/> 
         </Button>
-        <Converter show={converterModal} onHide={() => setConverterModal(false)} />
+        <Converter rate={rate} show={converterModal} onHide={() => setConverterModal(false)} />
       </>
       
        

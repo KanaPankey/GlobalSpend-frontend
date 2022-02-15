@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // react
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 
 // pages
@@ -16,8 +16,12 @@ import StoresPage from './pages/StoresPage';
 import RenderNavbar from './components/RenderNavbar';
 import RenderFooter from './components/RenderFooter';
 
+// api
+import ConverterAPI from './api/ConverterAPI'
+
 // context
 import EnvelopeArrayContext from './context/EnvelopeArrayContext';
+
 
 function App() {
   const [envelopeArray, setEnvelopeArray] = useState([])
@@ -25,6 +29,34 @@ function App() {
   // states for modals
   const [envelopeModal, setEnvelopeModal] = useState(0)
   const [storeModal, setStoreModal] = useState(0)
+
+  // states...home and spend rates are in relation to EUR
+  const [homeRate, setHomeRate] = useState(null) 
+  const [spendRate, setSpendRate] = useState(null) 
+  const [relativeRate, setRelativeRate] = useState(null)  
+
+  // get conversion rate
+  // retrieve exchange rates compared to EUR from API
+  useEffect(() => {
+    const getConversionRate = async() => {
+      const data = await ConverterAPI.fetchRates()
+      if (data) {
+        let getHomeRate = data.rates.USD
+        setHomeRate(getHomeRate)
+        let getSpendRate = data.rates.NOK
+        setSpendRate(getSpendRate)
+      }
+    }
+    // getConversionRate()  
+  }, [])
+  
+  // calculate relative exchange rate between home and spend currencies through EUR
+  useEffect(() => {
+    let getRelativeRate = homeRate/spendRate
+    console.log("getrelrate", getRelativeRate)
+    setRelativeRate(getRelativeRate)
+  }, [spendRate, homeRate])
+
 
   return (
     <div className="App">
@@ -41,7 +73,7 @@ function App() {
             <Route path="/envelope/" element={<EnvelopesPage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
             <Route path="/store/" element={<StoresPage storeModal={storeModal} setStoreModal={setStoreModal} />} />
           </Routes> 
-          <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} />
+          <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} rate={relativeRate}/>
         </BrowserRouter>
       </EnvelopeArrayContext.Provider>
     </div>

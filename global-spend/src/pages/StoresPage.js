@@ -87,7 +87,12 @@ function StorePage(props) {
       <h1>Store List</h1>
       <hr />
       {storeArray.map((store, index) => {
-          return <StoreDetail setStoreArray={setStoreArray} store={store} storeModal={props.storeModal} setStoreModal={props.setStoreModal} />
+          return (
+            <>
+              <StoreDetail setStoreArray={setStoreArray} store={store} storeModal={props.storeModal} setStoreModal={props.setStoreModal} />
+              <hr/>
+            </>
+          )
       })}
     </div>
   )
