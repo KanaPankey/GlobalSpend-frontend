@@ -42,7 +42,7 @@ function StoreDetail(props) {
             <Button className='edit-icon' variant="primary" onClick={() => setEditStoreModal(props.store.id)}>
               <FaEdit />
             </Button>
-            <EditStore store={props.store} show={editStoreModal==props.store.id} onHide={() => setEditStoreModal(false)} />
+            <EditStore storeArray={props.storeArray} setStoreArray={props.setStoreArray} store={props.store} show={editStoreModal==props.store.id} onHide={() => setEditStoreModal(false)} />
           </>{' '}
           <Button className="delete-icon" onClick={() => deleteStore(props.store.id)} >
             <FaTrash />

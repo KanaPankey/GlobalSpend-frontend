@@ -9,21 +9,22 @@ import BackendAPI from "../api/BackendAPI"
 import EnvelopeDropdown from "../components/EnvelopeDropdown"
 
 function EditStore(props) {
+  console.log("editstore props", props)
   // router props
   const navigate = useNavigate()
 
-  // states
-  const [store, setStore] = useState(null)
+  // // states
+  // const [store, setStore] = useState(null)
 
-  // effects
-  useEffect (() => {
-    const getStore = async () => {
-      const data = await BackendAPI.fetchStoreByID(props.store.id) 
-      setStore(data)
-    }
+  // // effects
+  // useEffect (() => {
+  //   const getStore = async () => {
+  //     const data = await BackendAPI.fetchStoreByID(props.store.id) 
+  //     setStore(data)
+  //   }
 
-    getStore()
-  }, [] )
+  //   getStore()
+  // }, [] )
 
   // handlers
   const handleFormSubmit = async (event) => {
@@ -42,10 +43,24 @@ function EditStore(props) {
 
     const data = await BackendAPI.updateStore(storeObj, props.store.id)
     if (data) {
-      navigate(`/store/`)
-      props.onHide()
+      window.location.reload()
+      // props.onHide()
     }
+
+
+    // const copyStoreArray = [...props.storeArray]
+
+    // copyStoreArray.forEach((store) => {
+    //   if (store.id == props.store.id) {
+    //     console.log("in copystorearray")
+    //     BackendAPI.updateStore(storeObj, props.store.id)
+    //   }
+    // })
+
+    // props.setStoreArray(copyStoreArray)
+    // props.onHide()
   }
+  
 
   // render
   return (
@@ -64,38 +79,38 @@ function EditStore(props) {
         <Form onSubmit={handleFormSubmit}>
           <Form.Group>
             <Form.Label>Name</Form.Label>
-            <Form.Control placeholder="name" defaultValue={store && store.store_name} />
+            <Form.Control placeholder="name" defaultValue={props.store && props.store.store_name} />
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>Envelope</Form.Label>
-            <EnvelopeDropdown defaultValue={store && store.envelope}/>
+            <EnvelopeDropdown defaultValue={props.store && props.store.envelope}/>
             {/* <Form.Control placeholder="envelope" defaultValue={store && store.envelope} /> */}
           </Form.Group>
           <br />
           <Form.Group>
             <Form.Label>Location: Latitude</Form.Label>
-            <Form.Control placeholder="latitude" defaultValue={store && store.store_latitude} />
+            <Form.Control placeholder="latitude" defaultValue={props.store && props.store.store_latitude} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Location: Longitude</Form.Label>
-            <Form.Control placeholder="longitude" defaultValue={store && store.store_longitude} />
+            <Form.Control placeholder="longitude" defaultValue={props.store && props.store.store_longitude} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Typical Amount 1</Form.Label>
-            <Form.Control placeholder="amt_1" defaultValue={store && store.amt_1} />
+            <Form.Control placeholder="amt_1" defaultValue={props.store && props.store.amt_1} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Typical Amount 2</Form.Label>
-            <Form.Control placeholder="amt_2" defaultValue={store && store.amt_2} />
+            <Form.Control placeholder="amt_2" defaultValue={props.store && props.store.amt_2} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Typical Amount 3</Form.Label>
-            <Form.Control placeholder="amt_3" defaultValue={store && store.amt_3} />
+            <Form.Control placeholder="amt_3" defaultValue={props.store && props.store.amt_3} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Typical Amount 4</Form.Label>
-            <Form.Control placeholder="amt_4" defaultValue={store && store.amt_4} />
+            <Form.Control placeholder="amt_4" defaultValue={props.store && props.store.amt_4} />
           </Form.Group>
 
           <Button className='add-chore-btn' variant="primary" type="submit">
