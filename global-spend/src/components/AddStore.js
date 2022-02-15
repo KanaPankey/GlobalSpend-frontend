@@ -12,13 +12,13 @@ import BackendAPI from '../api/BackendAPI'
 import GetStoreLocationAPI from '../api/GetStoreLocationAPI'
 
 // components
-import EnvelopeDropdown from '../components/EnvelopeDropdown'
+import EnvelopeDropdown from './EnvelopeDropdown'
 
 // context
 import StoreArrayContext from '../context/StoreArrayContext'
 
 
-function AddEditStore(props) {
+function AddStore(props) {
   // router props
   const navigate = useNavigate()
 
@@ -58,10 +58,6 @@ function AddEditStore(props) {
         </select>
     )
   }
-
-  // changes depending on whether adding or editing
-  const editingStore = props.store
-  const action = editingStore ? "Edit" : "Add"
   
   // handlers
   const handleFormSubmit = async (event) => {
@@ -108,8 +104,6 @@ function AddEditStore(props) {
     }
   }
 
-  // render helper
-
   // render
   return (
     <Modal
@@ -135,7 +129,6 @@ function AddEditStore(props) {
           <Form.Group>
             <Form.Label>Envelope</Form.Label>
             <div><EnvelopeDropdown /></div>
-            {/* <Form.Control placeholder="envelope" /> */}
           </Form.Group>
           <br />
           <Form.Group>
@@ -182,4 +175,4 @@ function AddEditStore(props) {
 
 
 
-export default AddEditStore;
+export default AddStore;

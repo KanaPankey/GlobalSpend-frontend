@@ -64,15 +64,15 @@ function StorePage(props) {
   }
 
   return (
-    <div className="container mt-4">
+    <div className="store-list container mt-4">
       <h1>Stores</h1>
       <hr />
       {storeArray.map((store, index) => {
           return (
             <div key={index}>
               <Row className='store-detail-row'>
-                <Col sm={2}>{store.store_name}</Col>
-                <Col sm={3}>{displayEnvelopeName(store.envelope)}</Col>
+                <Col sm={3}>{store.store_name}</Col>
+                <Col sm={2}>{displayEnvelopeName(store.envelope)}</Col>
                 <Col sm={1}>{store.amt_1}</Col>
                 <Col sm={1}>{store.amt_2}</Col>
                 <Col sm={1}>{store.amt_3}</Col>

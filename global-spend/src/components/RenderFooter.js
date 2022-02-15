@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button'
 
 // components
 import AddEditEnvelope from './AddEditEnvelope'
-import AddEditStore from './AddEditStore'
+import AddStore from './AddStore'
 import Converter from './Converter'
 
 
@@ -31,7 +31,7 @@ function RenderFooter({envelopeModal, setEnvelopeModal, storeModal, setStoreModa
         <Button className='add-icon' variant="primary" onClick={() => setStoreModal(true)}>
           <MdAddBusiness className="footer-icon"/> 
         </Button>
-        <AddEditStore show={storeModal} onHide={() => setStoreModal(false)} />
+        <AddStore show={storeModal} onHide={() => setStoreModal(false)} />
       </>
       <>
         <Button className='add-icon' variant="primary" onClick={() => setConverterModal(true)}>
