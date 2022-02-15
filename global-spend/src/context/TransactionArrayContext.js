@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 const TransactionArrayContext = createContext({
-  transactionArray: [], 
-  setTransactionArray: [], 
+  transactionArray: null, 
+  setTransactionArray: () => {}, 
 });
 
 export default TransactionArrayContext;

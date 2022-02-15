@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 const StoreArrayContext = createContext({
-  storeArray: [], 
-  setStoreArray: [], 
+  storeArray: null, 
+  setStoreArray: () => {}, 
 });
 
 export default StoreArrayContext;

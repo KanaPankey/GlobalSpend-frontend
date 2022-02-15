@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 const EnvelopeArrayContext = createContext({
-  envelopeArray: [], 
-  setEnvelopeArray: [], 
+  envelopeArray: null, 
+  setEnvelopeArray: () => {}, 
 });
 
 export default EnvelopeArrayContext;
