@@ -1,6 +1,6 @@
 // react
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 
 // css
 import Modal from 'react-bootstrap/Modal'
@@ -14,12 +14,16 @@ import GetStoreLocationAPI from '../api/GetStoreLocationAPI'
 // components
 import EnvelopeDropdown from '../components/EnvelopeDropdown'
 
+// context
+import StoreArrayContext from '../context/StoreArrayContext'
+
 
 function AddEditStore(props) {
   // router props
   const navigate = useNavigate()
 
   // states
+  const {storeArray, setStoreArray} = useContext(StoreArrayContext)
   const [storeList, setStoreList] = useState([])
   const [storePosition, setStorePosition] = useState([])
 
@@ -55,8 +59,6 @@ function AddEditStore(props) {
     )
   }
 
-  console.log("props", props)
-  console.log("props.store", props.store)
   // changes depending on whether adding or editing
   const editingStore = props.store
   const action = editingStore ? "Edit" : "Add"
@@ -95,8 +97,12 @@ function AddEditStore(props) {
       envelope: [parseInt(event.target.elements[2].value)]
     }
 
+    const copyStoreArray = [...storeArray]
+    copyStoreArray.push(storeObj)
+
     const data = await BackendAPI.addStore(storeObj)
     if (data) {
+      setStoreArray(copyStoreArray)
       navigate(`/store/`)
       props.onHide()
     }
@@ -114,14 +120,14 @@ function AddEditStore(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {action} Store
+          Add Store
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group>
             <Form.Label>Search for Store</Form.Label>
-            <Form.Control onChange={getStoreLocation} placeholder="name or address" defaultValue={props.store && props.store.store_name} />
+            <Form.Control onChange={getStoreLocation} placeholder="name or address"  />
           </Form.Group>
         <DisplayStores />
           <br />
@@ -162,7 +168,7 @@ function AddEditStore(props) {
           </Form.Group>
 
           <Button className='add-chore-btn' variant="primary" type="submit">
-            {action} Store
+            Add Store
           </Button>
         </Form>
       </Modal.Body>

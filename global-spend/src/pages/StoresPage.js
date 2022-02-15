@@ -1,5 +1,5 @@
 // react
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 
 // css
 import Button from 'react-bootstrap/Button'
@@ -13,23 +13,24 @@ import { Row, Col } from 'react-bootstrap'
 
 // components
 import EditStore from '../components/EditStore';
+import StoreArrayContext from '../context/StoreArrayContext';
 
 
 function StorePage(props) {
   // states
-  const [storeArray, setStoreArray] = useState([])
+  const {storeArray, setStoreArray} = useContext(StoreArrayContext)
   const [envelopeArray, setEnvelopeArray] = useState([])
   const [editStoreModal, setEditStoreModal] = useState(0)
 
   // populates array of store objects
   useEffect(() => {
-    const getstoreArray = async() => {
+    const getStoreArray = async() => {
       const data = await BackendAPI.fetchStores()
       if (data) {
         setStoreArray(data)
       }
     }
-    getstoreArray()
+    getStoreArray()
   }, [])
 
   // populates array of envelope objects
