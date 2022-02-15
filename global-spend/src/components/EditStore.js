@@ -51,14 +51,15 @@ function EditStore(props) {
     // const copyStoreArray = [...props.storeArray]
 
     // copyStoreArray.forEach((store) => {
+    //   console.log("ids", store.id, props.store.id)
     //   if (store.id == props.store.id) {
     //     console.log("in copystorearray")
-    //     BackendAPI.updateStore(storeObj, props.store.id)
+    //     const data = BackendAPI.updateStore(storeObj, props.store.id)
     //   }
     // })
-
+    // console.log("storeArray after foreach", copyStoreArray)
     // props.setStoreArray(copyStoreArray)
-    // props.onHide()
+    // // props.onHide()
   }
   
 
