@@ -1,5 +1,5 @@
 // react
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // css
 import Modal from 'react-bootstrap/Modal'
@@ -8,36 +8,36 @@ import Form from 'react-bootstrap/Form'
 
 
 function Converter(props) {
-  console.log("props in converter", props)
   // states
-  const[price, setPrice] = useState(null)
-  const[displayPrice, setDisplayPrice] = useState(0.00)
-
-  // effects
-  useEffect(() => {
-    setDisplayPrice(parseFloat(price).toFixed(2))
-  }, [price])
+  const[price, setPrice] = useState(null)  // user inputted price converted and formatted based on exchange rate
   
   // handlers
   const handleFormSubmit = (event) => {
     event.preventDefault()
     
-    // calculates the user inputted price to the price in dollars
+    // converts the user inputted price to the price in dollars
     const priceInput = event.target[0].value
     let convertedPrice = priceInput * props.rate
-    setPrice(convertedPrice)
+    let displayPrice = parseFloat(convertedPrice).toFixed(2)
+    setPrice(displayPrice)
   }
   
   const renderConvertedPrice = (price) => {
     return (
       <div>
-        <h2>Price in $: { displayPrice == 'NaN' ? '' : displayPrice }</h2>
+        <h2>Price in $: { price == 'NaN' ? '' : price }</h2>
         <br />
         <h6>Conversion rate: {props.rate}</h6>
       </div>
     )
   }
 
+  const resetOnClose = () => {
+    setPrice(null)
+    props.onHide()
+  }
+
+  // render
   return ( 
     <Modal
       {...props}
@@ -68,7 +68,7 @@ function Converter(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className='generic-btn' onClick={props.onHide}>Close</Button>
+        <Button className='generic-btn' onClick={resetOnClose}>Close</Button>
       </Modal.Footer>
     </Modal>
   );
