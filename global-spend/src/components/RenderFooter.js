@@ -33,7 +33,7 @@ function RenderFooter() {
         <Button className='add-icon' variant="primary" onClick={() => setStoreModal(true)}>
           <MdAddBusiness className="footer-icon"/> 
         </Button>
-        <AddEditStore store='false' show={storeModal} onHide={() => setStoreModal(false)} />
+        <AddEditStore show={storeModal} onHide={() => setStoreModal(false)} />
       </>
       <>
         <Button className='add-icon' variant="primary" onClick={() => setConverterModal(true)}>

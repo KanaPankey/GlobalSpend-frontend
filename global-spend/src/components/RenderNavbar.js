@@ -11,9 +11,9 @@ function RenderNavbar() {
       <Container className="text-right">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/transactions/">Transactions</Nav.Link>
-            <Nav.Link href="/envelopes/">Envelopes</Nav.Link>
-            <Nav.Link href="/stores/">Stores</Nav.Link>
+            <Nav.Link href="/transaction/">Transactions</Nav.Link>
+            <Nav.Link href="/envelope/">Envelopes</Nav.Link>
+            <Nav.Link href="/store/">Stores</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

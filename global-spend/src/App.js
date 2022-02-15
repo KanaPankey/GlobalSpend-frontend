@@ -33,9 +33,9 @@ function App() {
           <RenderNavbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/transactions/" element={<TransactionsPage />} />
-            <Route path="/envelopes/" element={<EnvelopesPage />} />
-            <Route path="/stores/" element={<StoresPage />} />
+            <Route path="/transaction/" element={<TransactionsPage />} />
+            <Route path="/envelope/" element={<EnvelopesPage />} />
+            <Route path="/store/" element={<StoresPage />} />
           </Routes> 
           <RenderFooter />
         </BrowserRouter>

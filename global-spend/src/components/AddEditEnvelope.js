@@ -13,11 +13,12 @@ import EnvelopeArrayContext from '../context/EnvelopeArrayContext'
 // api
 import BackendAPI from '../api/BackendAPI'
 
+
 function AddEditEnvelope(props) {
   const navigate = useNavigate()
 
-  // states
-  const { envelopeArray, setEnvelopeArray } = useContext(EnvelopeArrayContext)
+  // // states
+  // const { envelopeArray, setEnvelopeArray } = useContext(EnvelopeArrayContext)
 
   // changes depending on whether adding or editing
   const editingEnvelope = props.envelope
@@ -37,7 +38,8 @@ function AddEditEnvelope(props) {
       ? await BackendAPI.updateEnvelope(envelopeObj, props.envelope.id)
       : await BackendAPI.addEnvelope(envelopeObj)
     if (data) {
-      window.location.reload()
+      navigate(`/envelope/`)
+      props.onHide()
     }
 
     // const copyEnvelopeArray = [...envelopeArray]
