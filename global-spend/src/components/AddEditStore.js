@@ -55,6 +55,8 @@ function AddEditStore(props) {
     )
   }
 
+  console.log("props", props)
+  console.log("props.store", props.store)
   // changes depending on whether adding or editing
   const editingStore = props.store
   const action = editingStore ? "Edit" : "Add"
@@ -119,7 +121,7 @@ function AddEditStore(props) {
         <Form onSubmit={handleFormSubmit}>
           <Form.Group>
             <Form.Label>Search for Store</Form.Label>
-            <Form.Control onChange={getStoreLocation} placeholder="name or address" />
+            <Form.Control onChange={getStoreLocation} placeholder="name or address" defaultValue={props.store && props.store.store_name} />
           </Form.Group>
         <DisplayStores />
           <br />

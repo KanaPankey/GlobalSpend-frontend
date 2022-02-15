@@ -15,10 +15,8 @@ import AddEditStore from './AddEditStore'
 import Converter from './Converter'
 
 
-function RenderFooter() {
+function RenderFooter({envelopeModal, setEnvelopeModal, storeModal, setStoreModal}) {
   // states for modals
-  const [envelopeModal, setEnvelopeModal] = useState(0)
-  const [storeModal, setStoreModal] = useState(0)
   const [converterModal, setConverterModal] = useState(false)
 
   return(
