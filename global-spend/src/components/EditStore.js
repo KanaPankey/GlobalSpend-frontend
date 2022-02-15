@@ -9,22 +9,7 @@ import BackendAPI from "../api/BackendAPI"
 import EnvelopeDropdown from "../components/EnvelopeDropdown"
 
 function EditStore(props) {
-  console.log("editstore props", props)
-  // router props
-  const navigate = useNavigate()
-
-  // // states
-  // const [store, setStore] = useState(null)
-
-  // // effects
-  // useEffect (() => {
-  //   const getStore = async () => {
-  //     const data = await BackendAPI.fetchStoreByID(props.store.id) 
-  //     setStore(data)
-  //   }
-
-  //   getStore()
-  // }, [] )
+  // console.log("editstore props", props)
 
   // handlers
   const handleFormSubmit = async (event) => {

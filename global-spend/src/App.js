@@ -22,11 +22,13 @@ import ConverterAPI from './api/ConverterAPI'
 // context
 import EnvelopeArrayContext from './context/EnvelopeArrayContext';
 import StoreArrayContext from './context/StoreArrayContext';
+import TransactionArrayContext from './context/TransactionArrayContext';
 
 
 function App() {
   const [envelopeArray, setEnvelopeArray] = useState([])
   const [storeArray, setStoreArray] = useState([])
+  const [transactionArray, setTransactionArray] = useState([])
 
   // states for modals
   const [envelopeModal, setEnvelopeModal] = useState(false)
@@ -72,16 +74,22 @@ function App() {
             storeArray: storeArray,
             setStoreArray: setStoreArray,
           }}>
-          <BrowserRouter>
-            <RenderNavbar />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/transaction/" element={<TransactionsPage />} />
-              <Route path="/envelope/" element={<EnvelopesPage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
-              <Route path="/store/" element={<StoresPage storeModal={storeModal} setStoreModal={setStoreModal} />} />
-            </Routes> 
-            <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} rate={relativeRate}/>
-          </BrowserRouter>
+          <TransactionArrayContext.Provider 
+            value={{
+              transactionArray: transactionArray,
+              setTransactionArray: setTransactionArray,
+            }}>
+            <BrowserRouter>
+              <RenderNavbar />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/transaction/" element={<TransactionsPage />} />
+                <Route path="/envelope/" element={<EnvelopesPage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
+                <Route path="/store/" element={<StoresPage storeModal={storeModal} setStoreModal={setStoreModal} />} />
+              </Routes> 
+              <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} rate={relativeRate}/>
+            </BrowserRouter>
+          </TransactionArrayContext.Provider >
         </StoreArrayContext.Provider >
       </EnvelopeArrayContext.Provider>
     </div>
