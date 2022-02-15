@@ -15,6 +15,7 @@ import BackendAPI from '../api/BackendAPI'
 
 
 function AddEditEnvelope(props) {
+  console.log("addedit props", props)
   const navigate = useNavigate()
 
   // // states

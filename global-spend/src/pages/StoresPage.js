@@ -13,6 +13,8 @@ import { Row, Col } from 'react-bootstrap'
 
 // components
 import EditStore from '../components/EditStore';
+
+// context
 import StoreArrayContext from '../context/StoreArrayContext';
 
 

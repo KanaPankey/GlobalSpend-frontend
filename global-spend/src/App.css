@@ -45,4 +45,10 @@
 .store-list {
   overflow-x: hidden;
   overflow-y: auto;
+  margin-bottom: 5%;
+}
+
+/* EnvelopeBar */
+.progress {
+  justify-content: right;
 }

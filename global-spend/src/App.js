@@ -29,7 +29,7 @@ function App() {
   const [storeArray, setStoreArray] = useState([])
 
   // states for modals
-  const [envelopeModal, setEnvelopeModal] = useState(0)
+  const [envelopeModal, setEnvelopeModal] = useState(false)
   const [storeModal, setStoreModal] = useState(0)
 
   // states...home and spend rates are in relation to EUR
