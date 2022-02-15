@@ -31,15 +31,19 @@ function StoreDetail(props) {
   return (
     <div>
       <Row className='store-detail-row'>
-        <Col>{props.store.store_name}</Col>
-        <Col>{props.store.envelope}</Col>
+        <Col sm={2}>{props.store.store_name}</Col>
+        <Col sm={3}>{props.store.envelope}</Col>
+        <Col sm={1}>{props.store.amt_1}</Col>
+        <Col sm={1}>{props.store.amt_2}</Col>
+        <Col sm={1}>{props.store.amt_3}</Col>
+        <Col sm={1}>{props.store.amt_4}</Col>
         <Col>
           <>
             <Button className='edit-icon' variant="primary" onClick={() => setEditStoreModal(props.store.id)}>
               <FaEdit />
             </Button>
             <EditStore store={props.store} show={editStoreModal==props.store.id} onHide={() => setEditStoreModal(false)} />
-          </>
+          </>{' '}
           <Button className="delete-icon" onClick={() => deleteStore(props.store.id)} >
             <FaTrash />
           </Button>

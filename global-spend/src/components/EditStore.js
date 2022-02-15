@@ -11,7 +11,6 @@ import EnvelopeDropdown from "../components/EnvelopeDropdown"
 function EditStore(props) {
   // router props
   const navigate = useNavigate()
-  const params = useParams()
 
   // states
   const [store, setStore] = useState(null)
@@ -19,7 +18,7 @@ function EditStore(props) {
   // effects
   useEffect (() => {
     const getStore = async () => {
-      const data = await BackendAPI.fetchStoreByID(params.storeID) 
+      const data = await BackendAPI.fetchStoreByID(props.store.id) 
       setStore(data)
     }
 
@@ -41,9 +40,10 @@ function EditStore(props) {
       envelope: [event.target.elements[1].value]
     }
 
-    const data = await BackendAPI.updateStore(storeObj, params.storeID)
+    const data = await BackendAPI.updateStore(storeObj, props.store.id)
     if (data) {
-      navigate(`/store/${data.id}`)
+      navigate(`/store/`)
+      props.onHide()
     }
   }
 
