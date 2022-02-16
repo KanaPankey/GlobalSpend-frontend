@@ -53,6 +53,12 @@ button.btn.btn-primary {
   margin-bottom: 5%;
 }
 
+/* TransactionsPage */
+.transaction-list {
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 5%;
+}
 /* EnvelopeBar */
 .progress {
   justify-content: right;
