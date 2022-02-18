@@ -10,6 +10,7 @@ import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TransactionsPage from './pages/TransactionsPage';
 import EnvelopesPage from './pages/EnvelopesPage';
+import SingleEnvelopePage from './pages/SingleEnvelopePage'
 import StoresPage from './pages/StoresPage';
 
 // components
@@ -85,6 +86,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/transaction/" element={<TransactionsPage />} />
                 <Route path="/envelope/" element={<EnvelopesPage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
+                <Route exact path="/envelope/:envelopeID" element={<SingleEnvelopePage />} />
                 <Route path="/store/" element={<StoresPage storeModal={storeModal} setStoreModal={setStoreModal} />} />
               </Routes> 
               <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} rate={relativeRate}/>

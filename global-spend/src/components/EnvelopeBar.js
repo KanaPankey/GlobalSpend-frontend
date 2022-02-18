@@ -36,7 +36,7 @@ function EnvelopeBar({envelope, envelopeModal, setEnvelopeModal}) {
   return (
     <div>
       <Row>
-        <Col><Link to={`/envelope/${envelope.id}/`} style={{color:'black'}}>{envelope.envelope_name}</Link></Col>
+        <Col><Link to={`/envelope/${envelope.id}/`} >{envelope.envelope_name}</Link></Col>
         <Col><ProgressBar variant="success" now={ progressBarFill } /></Col>
         <Col>$ {Math.round(envelope.current_amt)}/{Math.round(envelope.fill_amt)}</Col>
         <Col>
