@@ -1,5 +1,6 @@
 const api = 'f40b5159f15fb78282a936b6478aa839';
 
+// 1000 calls/mo
 const BASE_URL = `http://api.exchangeratesapi.io/v1/latest?access_key=${api}`
 
 

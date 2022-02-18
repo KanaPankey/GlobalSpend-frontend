@@ -1,6 +1,7 @@
 const api = 'pk.6d8f36ffb7c400d2fe02117015c63fe7';
 const countryCode = 'no'
 
+// 5000 calls/day
 const BASE_URL = `https://eu1.locationiq.com/v1/search.php?key=${api}&countrycodes=${countryCode}&format=json&q=`
 
 

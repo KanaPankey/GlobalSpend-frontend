@@ -1,13 +1,11 @@
 // react
 import { useEffect, useState, useContext } from 'react'
 
-// css
-import Button from 'react-bootstrap/Button'
-
 // api
 import BackendAPI from '../api/BackendAPI'
 
 // css
+import Button from 'react-bootstrap/Button'
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import { Row, Col } from 'react-bootstrap'
 
@@ -88,7 +86,7 @@ function TransactionPage(props) {
                     <EditTransaction transactionModal={transactionModal} setTransactionModal={setTransactionModal} transaction={transaction} show={transactionModal==transaction.id} onHide={() => setTransactionModal(false)} />
                   </>{' '}
                   <Button className="delete-icon" onClick={() => deleteTransaction(transaction.id)} >
-                    <FaTrash />
+                  <FaTrash />
                   </Button>
                 </Col>
               </Row>
