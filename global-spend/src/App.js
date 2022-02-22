@@ -86,7 +86,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/transaction/" element={<TransactionsPage />} />
                 <Route path="/envelope/" element={<EnvelopesPage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
-                <Route exact path="/envelope/:envelopeID" element={<SingleEnvelopePage />} />
+                <Route exact path="/envelope/:envelopeID" element={<SingleEnvelopePage envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} />} />
                 <Route path="/store/" element={<StoresPage storeModal={storeModal} setStoreModal={setStoreModal} />} />
               </Routes> 
               <RenderFooter envelopeModal={envelopeModal} setEnvelopeModal={setEnvelopeModal} storeModal={storeModal} setStoreModal={setStoreModal} rate={relativeRate}/>

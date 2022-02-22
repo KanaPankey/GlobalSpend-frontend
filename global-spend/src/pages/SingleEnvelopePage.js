@@ -9,7 +9,7 @@ import BackendAPI from '../api/BackendAPI'
 import EnvelopeBar from '../components/EnvelopeBar';
 
 
-function SingleEnvelopePage() {
+function SingleEnvelopePage({envelopeModal, setEnvelopeModal}) {
   // states
   const [envelope, setEnvelope] = useState(null)
 
