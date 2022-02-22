@@ -1,56 +1,30 @@
 // react
-import { useEffect, useState, useContext } from 'react'
-
-// css
-import Button from 'react-bootstrap/Button'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 // api
 import BackendAPI from '../api/BackendAPI'
 
-// css
-import { FaTrash, FaEdit } from 'react-icons/fa';
-import { Row, Col } from 'react-bootstrap'
-
 // components
-import AddEditEnvelope from '../components/AddEditEnvelope';
 import EnvelopeBar from '../components/EnvelopeBar';
 
-// context
-import EnvelopeArrayContext from '../context/EnvelopeArrayContext';
 
-
-function SingleEnvelopePage({envelopeModal, setEnvelopeModal}) {
+function SingleEnvelopePage() {
   // states
-  const {envelopeArray, setEnvelopeArray} = useContext(EnvelopeArrayContext)
+  const [envelope, setEnvelope] = useState(null)
+
+  const params = useParams()
 
   // populates array of envelope objects
   useEffect(() => {
-    const getEnvelopeArray = async() => {
-      const data = await BackendAPI.fetchEnvelopes()
+    const getEnvelope = async() => {
+      const data = await BackendAPI.fetchEnvelopeByID(params.id)
       if (data) {
-        setEnvelopeArray(data)
+        setEnvelope(data)
       }
     }
-    getEnvelopeArray()
+    getEnvelope()
   }, [])
-
-  // helper functions
-  // change envelope id to envelope name in table
-  const displayEnvelopeName = (envelopeID) => {
-    for (let i = 0; i < envelopeArray.length; i++) {
-      if (envelopeArray[i].id == envelopeID) {
-        return envelopeArray[i].envelope_name
-      }
-    }
-  }
-
-  const deleteEnvelope = async(envelopeID) => {
-    const data = await BackendAPI.deleteEnvelope(envelopeID)
-    const envelopeList = await BackendAPI.fetchEnvelopes()
-    if (envelopeList) {
-      setEnvelopeArray(envelopeList)
-    }
-  }
 
   return (
     <div className="container mt-4">
